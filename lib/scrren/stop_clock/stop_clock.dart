@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:flutter/material.dart';
 
 class StopClock extends StatefulWidget {
@@ -17,18 +16,15 @@ class _StopClockState extends State<StopClock> {
   int ss = 0;
 
   bool isOnTimer = false;
+  List timeHistory = [];
 
   @override
-  // void dispose(){
-  //   super.dispose();
-  //   var timer;
-  //   timer?.cancle;
-  // }
-
   void timerClock() async {
-    await Future.delayed(Duration(milliseconds: 50), () {
-      ss++;
-
+    isOnTimer = true;
+    await Future.delayed(const Duration(milliseconds: 50), () {
+      if (isOnTimer) {
+        ss++;
+      }
       if (ss > 59) {
         ss = 0;
         mm++;
@@ -37,12 +33,14 @@ class _StopClockState extends State<StopClock> {
         mm = 0;
         hh++;
       }
-      if (hh > 12) {
+      if (hh >= 12) {
         hh = 0;
       }
       setState(() {});
     });
-    timerClock();
+    if (isOnTimer) {
+      timerClock();
+    }
   }
 
   Widget build(BuildContext context) {
@@ -57,23 +55,23 @@ class _StopClockState extends State<StopClock> {
       setState(() {});
     });
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        backgroundColor: Colors.black,
-        title: Text(
-          "Stop clock",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: textScaler.scale(25),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back),
+      //     color: Colors.white,
+      //     onPressed: () {
+      //       Navigator.of(context).pop();
+      //     },
+      //   ),
+      //   backgroundColor: Colors.black,
+      //   title: Text(
+      //     "Stop clock",
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //       fontSize: textScaler.scale(25),
+      //     ),
+      //   ),
+      // ),
       backgroundColor: Colors.black,
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -84,25 +82,23 @@ class _StopClockState extends State<StopClock> {
               Text(
                 "${(hh).toString().padLeft(2, '0')} : ${(mm).toString().padLeft(2, '0')} : ${(ss).toString().padLeft(2, '0')}",
                 style: TextStyle(
-                  fontSize: textScaler.scale(30),
-                  color: Colors.white
-                ),
+                    fontSize: textScaler.scale(30), color: Colors.white),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton.icon(
                     onPressed: () {
-                      if (isOnTimer) {
+                      if (!isOnTimer) {
                         timerClock();
                       }
                       setState(() {});
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.play_arrow,
                       color: Colors.black,
                     ),
-                    label: Text(
+                    label: const Text(
                       "Start",
                       style: TextStyle(color: Colors.black),
                     ),
@@ -110,13 +106,18 @@ class _StopClockState extends State<StopClock> {
                   ElevatedButton.icon(
                     onPressed: () {
                       isOnTimer = false;
+                      timeHistory.add({
+                        'hour': hh,
+                        'minute': mm,
+                        'second': ss,
+                      });
                       setState(() {});
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.stop,
                       color: Colors.black,
                     ),
-                    label: Text(
+                    label: const Text(
                       "Stop",
                       style: TextStyle(color: Colors.black),
                     ),
@@ -127,13 +128,14 @@ class _StopClockState extends State<StopClock> {
                 onPressed: () {
                   hh = mm = ss = 0;
                   isOnTimer = false;
+                  timeHistory = [];
                   setState(() {});
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.restart_alt,
                   color: Colors.black,
                 ),
-                label: Text(
+                label: const Text(
                   "Restart",
                   style: TextStyle(color: Colors.black),
                 ),
@@ -145,5 +147,3 @@ class _StopClockState extends State<StopClock> {
     );
   }
 }
-
-

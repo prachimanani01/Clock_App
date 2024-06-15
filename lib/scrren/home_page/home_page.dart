@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Spacer(),
-            Image.network('https://cdn.dribbble.com/users/4274213/screenshots/8439415/media/af617d85bb9c03d8a971ffb1567c8eec.gif'),
+            Image.network('https://cdn.dribbble.com/users/4274213/screenshots/8439415/media/af617d85bb9c03d8a971ffb1567c8eec.gif',scale: 1.5,),
 
             // Image.asset(
             //   "assets/images/img_1.png",

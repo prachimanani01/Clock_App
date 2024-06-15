@@ -29,16 +29,16 @@ class _StarpClockState extends State<StarpClock> {
       setState(() {});
     });
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.white,onPressed: (){Navigator.of(context).pop();},),
-        backgroundColor: Colors.black,
-        title: Text("Starp Clock",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: textScaler.scale(25),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   leading: IconButton(icon: Icon(Icons.arrow_back),color: Colors.white,onPressed: (){Navigator.of(context).pop();},),
+      //   backgroundColor: Colors.black,
+      //   title: Text("Starp Clock",
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //       fontSize: textScaler.scale(25),
+      //     ),
+      //   ),
+      // ),
       backgroundColor: Colors.black,
       body: Center(
         child: Align(
@@ -56,6 +56,7 @@ class _StarpClockState extends State<StarpClock> {
                 "${(dateTime.hour).toString().padLeft(2,'0')}:${(dateTime.minute).toString().padLeft(2,'0')}",
                 style: TextStyle(
                   color: Colors.white,
+                  fontWeight: FontWeight.bold,
                   fontSize: textScaler.scale(45),
                 ),
               ),
