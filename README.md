@@ -23,6 +23,23 @@
 - Programming Language: Dart
 - Platform Compatibility: Android, iOS
 
+⚙️ Question:
+ 1. What is Asynchronous Programming?
+ -  Asynchronous functions return a Future to signify that their result is not immediately available.
+ 2. What is Future Class?
+ -  Future in Flutter refers to an object that represents a value that is not yet available but will be at some point in the future.
+ 3. What is Duration class & Future.delayed() constructor with Example?
+ -  delayed Flutter is a constructor that creates a future which runs its computation after a delay.
+ 4. What is the Use of the async & await keyword?
+ - async: You can use the async keyword before a function's body to mark it as asynchronous.
+ - await: You can use the await keyword to get the completed result of an asynchronous expression.
+ 5. What is Recursion ? With Example. 
+ - Recursion is the process of breaking down an expression into smaller and smaller expressions until you're able to use the same algorithm to solve each expression.
+ 6. What is Timer class with example ?
+ - Timer class is the cornerstone of managing time-related functions within your app.
+ 7. What is Timer.periodic and use with Example?
+ - create a new repeating timer that fires at a specified duration, invoking a callback each time.
+
 📸 Screenshots:
 
    <img src ="https://github.com/prachimanani01/Clock_App/assets/144036679/6e9032ec-7cf6-4ce8-8c70-e29357eb1f79" width=250px>
